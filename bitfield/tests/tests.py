@@ -200,9 +200,9 @@ class BitFieldTest(TestCase):
         instance = BitFieldTestModel.objects.get(pk=instance.pk)
         self.assertTrue(instance.flags.FLAG_1)
 
+        raise Exception("%s" % instance.flags)
         BitFieldTestModel.objects.filter(pk=instance.pk).update(flags=bitor(F('flags'), ((~BitFieldTestModel.flags.FLAG_0 | BitFieldTestModel.flags.FLAG_3))))
         instance = BitFieldTestModel.objects.get(pk=instance.pk)
-        raise Exception("%s" % instance.flags)
         self.assertFalse(instance.flags.FLAG_0)
         self.assertTrue(instance.flags.FLAG_1)
         self.assertTrue(instance.flags.FLAG_3)
