@@ -14,6 +14,7 @@ cache:
 env:
   matrix:
     - DB=mysql DJANGO=1.4.12
+    - DB=postgres DJANGO=1.4.12
   global:
     - PIP_DOWNLOAD_CACHE=".pip_download_cache"
 
