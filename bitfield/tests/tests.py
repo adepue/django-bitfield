@@ -199,9 +199,12 @@ class BitFieldTest(TestCase):
         BitFieldTestModel.objects.filter(pk=instance.pk).update(flags=bitor(F('flags'), BitFieldTestModel.flags.FLAG_1))
         instance = BitFieldTestModel.objects.get(pk=instance.pk)
         self.assertTrue(instance.flags.FLAG_1)
-
-        raise Exception("%s" % instance.flags)
+        from django.db import connection, reset_queries
+        from django.conf import settings
+        settings.DEBUG = True
+        reset_queries()
         BitFieldTestModel.objects.filter(pk=instance.pk).update(flags=bitor(F('flags'), ((~BitFieldTestModel.flags.FLAG_0 | BitFieldTestModel.flags.FLAG_3))))
+        raise Exception(connection.queries[0]['sql'])
         instance = BitFieldTestModel.objects.get(pk=instance.pk)
         self.assertFalse(instance.flags.FLAG_0)
         self.assertTrue(instance.flags.FLAG_1)
