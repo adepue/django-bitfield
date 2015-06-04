@@ -17,23 +17,6 @@ cache:
 env:
   matrix:
     - DB=mysql DJANGO=1.4.12
-    - DB=postgres DJANGO=1.4.12
-    - DB=sqlite DJANGO=1.4.12
-    - DB=mysql DJANGO=1.5.7
-    - DB=postgres DJANGO=1.5.7
-    - DB=sqlite DJANGO=1.5.7
-    - DB=mysql DJANGO=1.6.4
-    - DB=postgres DJANGO=1.6.4
-    - DB=sqlite DJANGO=1.6.4
-    - DB=mysql DJANGO=1.7.7
-    - DB=postgres DJANGO=1.7.7
-    - DB=sqlite DJANGO=1.7.7
-    - DB=mysql DJANGO=1.8
-    - DB=postgres DJANGO=1.8
-    - DB=sqlite DJANGO=1.8
-    - 'DB=mysql DJANGO="-e git+git://github.com/django/django.git#egg=Django"'
-    - 'DB=postgres DJANGO="-e git+git://github.com/django/django.git#egg=Django"'
-    - 'DB=sqlite DJANGO="-e git+git://github.com/django/django.git#egg=Django"'
   global:
     - PIP_DOWNLOAD_CACHE=".pip_download_cache"
 
